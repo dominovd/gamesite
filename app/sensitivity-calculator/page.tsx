@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import SensCalculator from '@/components/sensitivity-calculator/SensCalculator'
+import { buildWebApplication, buildBreadcrumb, buildFAQ, serializeSchemas } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'FPS Sensitivity Calculator — CS2, Valorant, Apex, OW2, R6',
@@ -8,21 +9,25 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://hplaptop.co/sensitivity-calculator' },
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: 'FPS Sensitivity Calculator',
-  url: 'https://hplaptop.co/sensitivity-calculator',
-  applicationCategory: 'GameApplication',
-  operatingSystem: 'Any',
-  description: 'Convert mouse sensitivity between CS2, Valorant, Apex Legends, Overwatch 2 and R6 Siege',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-}
+const jsonLd = serializeSchemas(
+  buildWebApplication({
+    name: 'FPS Sensitivity Calculator',
+    url: 'https://hplaptop.co/sensitivity-calculator',
+    description: 'Convert mouse sensitivity between CS2, Valorant, Apex Legends, Overwatch 2 and R6 Siege. Free eDPI and cm/360° calculator.',
+  }),
+  buildBreadcrumb([{ name: 'Sensitivity Calculator', path: '/sensitivity-calculator' }]),
+  buildFAQ([
+    { q: 'What is eDPI?', a: 'eDPI (effective DPI) is your mouse DPI multiplied by your in-game sensitivity. It lets you compare sensitivity across different players and setups regardless of hardware.' },
+    { q: 'How do I convert sensitivity between games?', a: 'Enter your source game, current sensitivity and DPI. The calculator uses each game\'s yaw value to find the equivalent cm/360° distance and outputs the matching sensitivity for the target game.' },
+    { q: 'What DPI do pro FPS players use?', a: 'Most pro players use 400 or 800 DPI with low in-game sensitivity, resulting in an eDPI between 200 and 800. This gives more precision for aiming.' },
+    { q: 'Why does Valorant sensitivity feel different from CS2?', a: 'Each game uses a different multiplier (yaw) to convert in-game sensitivity to degrees of rotation. Valorant\'s yaw is 0.07 vs CS2\'s 0.022, so the same number means very different speeds.' },
+  ])
+)
 
 export default function SensCalculatorPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
         {/* Header */}
         <div className="text-center mb-10">

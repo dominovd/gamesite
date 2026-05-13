@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { buildWebApplication, buildBreadcrumb, buildFAQ, serializeSchemas } from '@/lib/schema'
 import UsernameGenerator from '@/components/username-generator/UsernameGenerator'
 
 const PLATFORM_META: Record<string, { title: string; description: string; keywords: string[] }> = {
@@ -92,11 +93,19 @@ const PLATFORM_CONTENT: Record<string, { heading: string; subheading: string; fa
   },
 }
 
+const jsonLd = serializeSchemas(
+  buildWebApplication({ name: 'Xbox Gamertag Generator', url: 'https://hplaptop.co/username-generator/xbox', description: 'Generate unique Xbox Gamertag Generator ideas — free, instant, no sign-up required.' }),
+  buildBreadcrumb([{ name: 'Username Generator', path: '/username-generator' }, { name: 'Xbox Gamertag Generator', path: '/username-generator/xbox' }]),
+  buildFAQ(PLATFORM_CONTENT['xbox'].faq.map((f) => ({ q: f.q, a: f.a })))
+)
+
 export default function PlatformGeneratorPage() {
   const content = PLATFORM_CONTENT['xbox']
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
       <div className="text-center mb-10">
         <h1 className="text-4xl md:text-5xl font-bold text-slate-100 mb-4">
           {content.heading}
@@ -123,5 +132,6 @@ export default function PlatformGeneratorPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }

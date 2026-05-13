@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import CanIRun from '@/components/can-i-run/CanIRun'
+import { buildWebApplication, buildBreadcrumb, buildFAQ, serializeSchemas } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'Can I Run This Game — PC Requirements Checker',
@@ -8,21 +9,25 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://hplaptop.co/can-i-run' },
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: 'Can I Run This Game',
-  url: 'https://hplaptop.co/can-i-run',
-  applicationCategory: 'UtilitiesApplication',
-  operatingSystem: 'Windows',
-  description: 'Check if your PC meets the system requirements for popular PC games',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-}
+const jsonLd = serializeSchemas(
+  buildWebApplication({
+    name: 'Can I Run This Game',
+    url: 'https://hplaptop.co/can-i-run',
+    description: 'Check if your PC meets minimum or recommended requirements for 15+ popular games. Select your GPU and RAM for instant results.',
+  }),
+  buildBreadcrumb([{ name: 'Can I Run This Game', path: '/can-i-run' }]),
+  buildFAQ([
+    { q: 'How does the PC requirements checker work?', a: 'Select a game and your GPU from the list. The tool compares your GPU performance score and RAM against the game\'s minimum and recommended requirements and shows you the result instantly.' },
+    { q: 'What games are supported?', a: 'The checker supports 15+ popular games including Fortnite, CS2, Valorant, Cyberpunk 2077, Elden Ring, GTA V, Minecraft, Apex Legends, Baldur\'s Gate 3, and more.' },
+    { q: 'How do I find my GPU model?', a: 'On Windows: right-click Desktop → Display Settings → Advanced Display. Or press Windows + R, type dxdiag, press Enter, then check the Display tab.' },
+    { q: 'My GPU is not in the list — what do I do?', a: 'Find a GPU in the list with a similar performance tier. For example, if you have an RX 6600, compare it to the RX 6700 XT which has a slightly higher score.' },
+  ])
+)
 
 export default function CanIRunPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
         {/* Header */}
         <div className="text-center mb-10">

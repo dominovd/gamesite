@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { buildWebSite, buildOrganization, buildItemList, serializeSchemas } from '@/lib/schema'
 
 export const metadata: Metadata = {
   title: 'Free Gaming Tools | Username Generator, Sensitivity Calculator | hplaptop.co',
@@ -53,9 +54,20 @@ const STATS = [
   { value: '100%', label: 'Free' },
 ]
 
+const jsonLd = serializeSchemas(
+  buildWebSite(),
+  buildOrganization(),
+  buildItemList([
+    { name: 'Gaming Username Generator', url: 'https://hplaptop.co/username-generator', description: 'Generate unique gamertags for Xbox, PS5, Roblox, Discord, Steam' },
+    { name: 'FPS Sensitivity Calculator', url: 'https://hplaptop.co/sensitivity-calculator', description: 'Convert mouse sensitivity between CS2, Valorant, Apex, OW2, R6' },
+    { name: 'Can I Run This Game', url: 'https://hplaptop.co/can-i-run', description: 'Check if your PC meets game requirements' },
+  ])
+)
+
 export default function HomePage() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />

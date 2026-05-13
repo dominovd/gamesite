@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import UsernameGenerator from '@/components/username-generator/UsernameGenerator'
+import { buildWebApplication, buildBreadcrumb, serializeSchemas } from '@/lib/schema'
 import {
   XboxIcon,
   PlayStationIcon,
@@ -15,16 +16,14 @@ export const metadata: Metadata = {
   alternates: { canonical: 'https://hplaptop.co/username-generator' },
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebApplication',
-  name: 'Gaming Username Generator',
-  url: 'https://hplaptop.co/username-generator',
-  applicationCategory: 'GameApplication',
-  operatingSystem: 'Any',
-  description: 'Generate unique gaming usernames for Xbox, PS5, Roblox, Discord and Steam',
-  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-}
+const jsonLd = serializeSchemas(
+  buildWebApplication({
+    name: 'Gaming Username Generator',
+    url: 'https://hplaptop.co/username-generator',
+    description: 'Generate unique gaming usernames and gamertags for Xbox, PS5, Roblox, Discord and Steam. Free, instant, no sign-up.',
+  }),
+  buildBreadcrumb([{ name: 'Username Generator', path: '/username-generator' }])
+)
 
 const PLATFORM_LINKS = [
   {
@@ -67,7 +66,7 @@ const PLATFORM_LINKS = [
 export default function UsernameGeneratorPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12">
         {/* Header */}
         <div className="text-center mb-10">

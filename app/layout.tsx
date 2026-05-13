@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://hplaptop.co'),
   title: {
     default: 'Gaming Tools | hplaptop.co',
     template: '%s | hplaptop.co',
@@ -12,6 +13,9 @@ export const metadata: Metadata = {
   keywords: ['gaming tools', 'gamertag generator', 'fps sensitivity calculator', 'can i run this game', 'roblox username generator'],
   authors: [{ name: 'hplaptop.co' }],
   creator: 'hplaptop.co',
+  alternates: {
+    canonical: 'https://hplaptop.co',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

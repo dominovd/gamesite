@@ -1,10 +1,18 @@
 import type { Metadata } from 'next'
 import UsernameGenerator from '@/components/username-generator/UsernameGenerator'
+import {
+  XboxIcon,
+  PlayStationIcon,
+  RobloxIcon,
+  DiscordIcon,
+  SteamIcon,
+} from '@/components/icons/PlatformIcons'
 
 export const metadata: Metadata = {
   title: 'Gaming Username Generator — Xbox, PS5, Roblox, Discord, Steam',
   description: 'Generate unique gaming usernames and gamertags for Xbox, PS5, Roblox, Discord, and Steam. Free, instant, no sign-up required.',
   keywords: ['gaming username generator', 'gamertag generator', 'gamertag maker', 'gaming name generator', 'xbox gamertag generator', 'roblox username generator'],
+  alternates: { canonical: 'https://hplaptop.co/username-generator' },
 }
 
 const jsonLd = {
@@ -17,6 +25,44 @@ const jsonLd = {
   description: 'Generate unique gaming usernames for Xbox, PS5, Roblox, Discord and Steam',
   offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
 }
+
+const PLATFORM_LINKS = [
+  {
+    href: '/username-generator/xbox',
+    name: 'Xbox Gamertag Generator',
+    Icon: XboxIcon,
+    iconColor: 'text-green-400',
+    desc: 'Max 12 chars, spaces allowed',
+  },
+  {
+    href: '/username-generator/ps5',
+    name: 'PS5 Username Generator',
+    Icon: PlayStationIcon,
+    iconColor: 'text-blue-400',
+    desc: 'Max 16 chars, start with a letter',
+  },
+  {
+    href: '/username-generator/roblox',
+    name: 'Roblox Username Generator',
+    Icon: RobloxIcon,
+    iconColor: 'text-red-400',
+    desc: 'Max 20 chars, letters & numbers',
+  },
+  {
+    href: '/username-generator/discord',
+    name: 'Discord Username Generator',
+    Icon: DiscordIcon,
+    iconColor: 'text-indigo-400',
+    desc: 'Max 32 chars, any letters & numbers',
+  },
+  {
+    href: '/username-generator/steam',
+    name: 'Steam Username Generator',
+    Icon: SteamIcon,
+    iconColor: 'text-slate-300',
+    desc: 'Max 32 chars, URL-safe characters',
+  },
+]
 
 export default function UsernameGeneratorPage() {
   return (
@@ -65,19 +111,15 @@ export default function UsernameGeneratorPage() {
           <section>
             <h2 className="text-2xl font-bold text-slate-100 mb-4">Platform-Specific Generators</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {[
-                { href: '/username-generator/xbox', name: 'Xbox Gamertag Generator', emoji: '🟢', desc: 'Max 12 chars, spaces allowed' },
-                { href: '/username-generator/ps5', name: 'PS5 Username Generator', emoji: '🔵', desc: 'Max 16 chars, start with a letter' },
-                { href: '/username-generator/roblox', name: 'Roblox Username Generator', emoji: '🔴', desc: 'Max 20 chars, letters & numbers' },
-                { href: '/username-generator/discord', name: 'Discord Username Generator', emoji: '🟣', desc: 'Max 32 chars, any letters & numbers' },
-                { href: '/username-generator/steam', name: 'Steam Username Generator', emoji: '⚫', desc: 'Max 32 chars, URL-safe characters' },
-              ].map((link) => (
+              {PLATFORM_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   className="card-sm flex items-start gap-3 hover:border-border-light transition-all group"
                 >
-                  <span className="text-2xl">{link.emoji}</span>
+                  <span className={`flex-shrink-0 mt-0.5 ${link.iconColor}`}>
+                    <link.Icon size={22} />
+                  </span>
                   <div>
                     <div className="font-medium text-slate-200 text-sm group-hover:text-accent-purple-light transition-colors">{link.name}</div>
                     <div className="text-slate-500 text-xs mt-0.5">{link.desc}</div>

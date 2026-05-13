@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'FPS Sensitivity Calculator — CS2, Valorant, Apex, OW2, R6',
   description: 'Convert your FPS mouse sensitivity between CS2, Valorant, Apex Legends, Overwatch 2 and Rainbow Six Siege. Free sensitivity calculator with eDPI and cm/360° conversion.',
   keywords: ['fps sensitivity calculator', 'sensitivity converter', 'valorant to cs2 sensitivity', 'apex sensitivity converter', 'edpi calculator', 'mouse sensitivity converter'],
+  alternates: { canonical: 'https://hplaptop.co/sensitivity-calculator' },
 }
 
 const jsonLd = {

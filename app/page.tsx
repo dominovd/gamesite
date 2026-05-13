@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Free Gaming Tools | Username Generator, Sensitivity Calculator | hplaptop.co',
   description: 'Free gaming tools: generate gamertags and usernames for Xbox, PS5, Roblox, Discord. Calculate FPS sensitivity. Check if your PC can run any game.',
+  alternates: { canonical: 'https://hplaptop.co' },
 }
 
 const TOOLS = [

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Can I Run This Game — PC Requirements Checker',
   description: 'Check if your PC can run any game. Enter your GPU and RAM to instantly see if you meet minimum or recommended requirements for 15+ popular games.',
   keywords: ['can i run this game', 'pc requirements checker', 'can my pc run', 'game system requirements', 'pc game compatibility check'],
+  alternates: { canonical: 'https://hplaptop.co/can-i-run' },
 }
 
 const jsonLd = {

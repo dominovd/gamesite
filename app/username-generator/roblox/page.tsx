@@ -35,6 +35,7 @@ export function generateMetadata({ params }: { params: { platform: string } }): 
     title: meta.title,
     description: meta.description,
     keywords: meta.keywords,
+    alternates: { canonical: 'https://hplaptop.co/username-generator/roblox' },
   }
 }
 

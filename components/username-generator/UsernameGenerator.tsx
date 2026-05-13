@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import { adjectives, nouns, suffixes, prefixes, platforms, type Platform } from '@/data/wordbank'
 import {
   XboxIcon,
@@ -87,7 +88,16 @@ interface Props {
   defaultPlatform?: Platform
 }
 
+const PLATFORM_SLUG: Record<Platform, string> = {
+  xbox:    'xbox',
+  ps5:     'ps5',
+  roblox:  'roblox',
+  discord: 'discord',
+  steam:   'steam',
+}
+
 export default function UsernameGenerator({ defaultPlatform = 'xbox' }: Props) {
+  const router = useRouter()
   const [activePlatform, setActivePlatform] = useState<Platform>(defaultPlatform)
   const [seed, setSeed] = useState('')
   const [usernames, setUsernames] = useState<string[]>(() =>
@@ -107,7 +117,8 @@ export default function UsernameGenerator({ defaultPlatform = 'xbox' }: Props) {
   const handlePlatformChange = useCallback((platform: Platform) => {
     setActivePlatform(platform)
     setUsernames(generateBatch(platform, seed, 12))
-  }, [seed])
+    router.replace(`/username-generator/${PLATFORM_SLUG[platform]}`, { scroll: false })
+  }, [seed, router])
 
   const copyToClipboard = (text: string, idx: number) => {
     navigator.clipboard.writeText(text).then(() => {

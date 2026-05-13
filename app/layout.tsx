@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://hplaptop.co',
   },
+  verification: {
+    google: 'BkeKQLq9osoZHBY9ROoBRywIivV6SgxPbSl38cqFKlI',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',

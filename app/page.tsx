@@ -45,6 +45,30 @@ const TOOLS = [
     platforms: ['Steam', 'Epic', 'PC', 'All platforms'],
     cta: 'Check My PC',
   },
+  {
+    href: '/clan-name-generator',
+    iconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />,
+    iconBg: 'bg-orange-500/15 text-orange-400',
+    title: 'Clan Name Generator',
+    description: 'Generate unique clan names and tags for any game. Military, mythic, cyber and shadow themes.',
+    badge: 'New',
+    badgeColor: 'text-orange-400 bg-orange-500/10 border-orange-500/30',
+    accent: 'orange',
+    platforms: ['CoD', 'CS2', 'Valorant', 'Any game'],
+    cta: 'Generate Clan Name',
+  },
+  {
+    href: '/crosshair-generator',
+    iconPath: <circle cx="12" cy="12" r="10" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} />,
+    iconBg: 'bg-accent-cyan/15 text-accent-cyan-light',
+    title: 'Crosshair Generator',
+    description: 'Design your perfect CS2 or Valorant crosshair. Adjust size, color, gap, dot and outline. Export config instantly.',
+    badge: 'New',
+    badgeColor: 'text-accent-cyan-light bg-accent-cyan/10 border-accent-cyan/30',
+    accent: 'cyan',
+    platforms: ['CS2', 'Valorant', 'FPS'],
+    cta: 'Create Crosshair',
+  },
 ]
 
 const STATS = [
@@ -61,6 +85,8 @@ const jsonLd = serializeSchemas(
     { name: 'Gaming Username Generator', url: 'https://hplaptop.co/username-generator', description: 'Generate unique gamertags for Xbox, PS5, Roblox, Discord, Steam' },
     { name: 'FPS Sensitivity Calculator', url: 'https://hplaptop.co/sensitivity-calculator', description: 'Convert mouse sensitivity between CS2, Valorant, Apex, OW2, R6' },
     { name: 'Can I Run This Game', url: 'https://hplaptop.co/can-i-run', description: 'Check if your PC meets game requirements' },
+    { name: 'Clan Name Generator', url: 'https://hplaptop.co/clan-name-generator', description: 'Generate unique clan names and tags for any game' },
+    { name: 'Crosshair Generator', url: 'https://hplaptop.co/crosshair-generator', description: 'Create custom crosshairs for CS2 and Valorant' },
   ])
 )
 

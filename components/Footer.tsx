@@ -7,6 +7,8 @@ const TOOLS = [
   { href: '/username-generator/ps5', label: 'PS5 Username Generator' },
   { href: '/sensitivity-calculator', label: 'FPS Sensitivity Calculator' },
   { href: '/can-i-run', label: 'Can I Run This Game' },
+  { href: '/clan-name-generator', label: 'Clan Name Generator' },
+  { href: '/crosshair-generator', label: 'Crosshair Generator' },
 ]
 
 export default function Footer() {
@@ -58,6 +60,16 @@ export default function Footer() {
               <li>
                 <Link href="/contact" className="text-slate-500 hover:text-accent-purple-light text-sm transition-colors duration-200">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy" className="text-slate-500 hover:text-accent-purple-light text-sm transition-colors duration-200">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="text-slate-500 hover:text-accent-purple-light text-sm transition-colors duration-200">
+                  Terms of Service
                 </Link>
               </li>
               <li>

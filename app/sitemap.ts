@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next'
+import { CONVERSIONS } from '@/data/conversions'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://hplaptop.co'
@@ -13,6 +14,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/username-generator/discord`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/username-generator/steam`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${baseUrl}/sensitivity-calculator`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    ...CONVERSIONS.map(c => ({
+      url: `${baseUrl}/sensitivity-calculator/${c.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
     { url: `${baseUrl}/can-i-run`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/clan-name-generator`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${baseUrl}/crosshair-generator`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },

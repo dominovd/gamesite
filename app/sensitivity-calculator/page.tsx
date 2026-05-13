@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import SensCalculator from '@/components/sensitivity-calculator/SensCalculator'
 import { buildWebApplication, buildBreadcrumb, buildFAQ, serializeSchemas } from '@/lib/schema'
+import { CONVERSIONS } from '@/data/conversions'
 
 export const metadata: Metadata = {
   title: 'FPS Sensitivity Calculator — CS2, Valorant, Apex, OW2, R6',
@@ -71,18 +72,15 @@ export default function SensCalculatorPage() {
           <section>
             <h2 className="text-2xl font-bold text-slate-100 mb-4">Popular Sensitivity Conversions</h2>
             <div className="grid sm:grid-cols-2 gap-3 text-sm">
-              {[
-                'Valorant to CS2 sensitivity',
-                'CS2 to Apex Legends sensitivity',
-                'Overwatch 2 to Valorant sensitivity',
-                'R6 Siege to CS2 sensitivity',
-                'Apex Legends to Valorant sensitivity',
-                'CS2 to Overwatch 2 sensitivity',
-              ].map((conv) => (
-                <div key={conv} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-bg-card border border-border text-slate-400">
+              {CONVERSIONS.slice(0, 12).map((conv) => (
+                <a
+                  key={conv.slug}
+                  href={`/sensitivity-calculator/${conv.slug}`}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-bg-card border border-border text-slate-400 hover:border-border-light hover:text-slate-200 transition-all"
+                >
                   <span className="text-accent-cyan">🖱️</span>
-                  {conv}
-                </div>
+                  {conv.fromName} to {conv.toName} sensitivity
+                </a>
               ))}
             </div>
           </section>

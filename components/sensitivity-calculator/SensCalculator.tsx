@@ -145,10 +145,15 @@ function convertSens(
   return Math.round(newSens * Math.pow(10, decimals)) / Math.pow(10, decimals)
 }
 
-export default function SensCalculator() {
-  const [fromGame, setFromGame] = useState('cs2')
-  const [toGame, setToGame] = useState('valorant')
-  const [sens, setSens] = useState(1.0)
+interface SensCalculatorProps {
+  defaultFrom?: string
+  defaultTo?: string
+}
+
+export default function SensCalculator({ defaultFrom = 'cs2', defaultTo = 'valorant' }: SensCalculatorProps) {
+  const [fromGame, setFromGame] = useState(defaultFrom in GAMES ? defaultFrom : 'cs2')
+  const [toGame, setToGame] = useState(defaultTo in GAMES ? defaultTo : 'valorant')
+  const [sens, setSens] = useState(() => GAMES[defaultFrom in GAMES ? defaultFrom : 'cs2'].defaultSens)
   const [dpi, setDpi] = useState(800)
 
   const fromConfig = GAMES[fromGame]

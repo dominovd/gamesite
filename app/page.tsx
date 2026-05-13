@@ -10,7 +10,8 @@ export const metadata: Metadata = {
 const TOOLS = [
   {
     href: '/username-generator',
-    icon: '🎮',
+    iconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />,
+    iconBg: 'bg-accent-purple/15 text-accent-purple-light',
     title: 'Gaming Username Generator',
     description: 'Generate unique gamertags and usernames for Xbox, PS5, Roblox, Discord, and Steam in seconds.',
     badge: 'Most Popular',
@@ -21,7 +22,8 @@ const TOOLS = [
   },
   {
     href: '/sensitivity-calculator',
-    icon: '🖱️',
+    iconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" />,
+    iconBg: 'bg-accent-cyan/15 text-accent-cyan-light',
     title: 'FPS Sensitivity Calculator',
     description: 'Convert your mouse sensitivity between CS2, Valorant, Apex Legends, Overwatch 2 and R6 Siege instantly.',
     badge: 'Pro Tool',
@@ -32,7 +34,8 @@ const TOOLS = [
   },
   {
     href: '/can-i-run',
-    icon: '💻',
+    iconPath: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />,
+    iconBg: 'bg-emerald-500/15 text-emerald-400',
     title: 'Can I Run This Game',
     description: 'Check if your PC meets the minimum or recommended requirements for any game instantly.',
     badge: 'PC Gamer',
@@ -74,11 +77,13 @@ export default function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/username-generator" className="btn-primary text-center">
-              🎮 Generate Username
+            <Link href="/username-generator" className="btn-primary text-center inline-flex items-center justify-center gap-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" /></svg>
+              Generate Username
             </Link>
-            <Link href="/sensitivity-calculator" className="btn-secondary text-center">
-              🖱️ Sensitivity Calc
+            <Link href="/sensitivity-calculator" className="btn-secondary text-center inline-flex items-center justify-center gap-2">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5" /></svg>
+              Sensitivity Calc
             </Link>
           </div>
 
@@ -109,7 +114,11 @@ export default function HomePage() {
               className="card group hover:border-border-light hover:glow-purple transition-all duration-300 flex flex-col"
             >
               <div className="flex items-start justify-between mb-4">
-                <span className="text-4xl">{tool.icon}</span>
+                <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${tool.iconBg}`}>
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    {tool.iconPath}
+                  </svg>
+                </div>
                 <span className={`tag border ${tool.badgeColor} text-xs`}>
                   {tool.badge}
                 </span>
@@ -155,13 +164,37 @@ export default function HomePage() {
             </h2>
             <div className="space-y-4">
               {[
-                { icon: '⚡', title: 'Instant Results', desc: 'No loading screens. All tools work client-side for instant results.' },
-                { icon: '🆓', title: 'Completely Free', desc: 'Every tool is 100% free with no hidden fees or sign-up required.' },
-                { icon: '🎯', title: 'Built for Gamers', desc: 'Designed with real gamer needs in mind — accurate, fast, and useful.' },
-                { icon: '📱', title: 'Works Everywhere', desc: 'Fully responsive — use on desktop, tablet, or mobile.' },
+                {
+                  title: 'Instant Results',
+                  desc: 'No loading screens. All tools work client-side for instant results.',
+                  color: 'text-accent-cyan bg-accent-cyan/10',
+                  svg: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />,
+                },
+                {
+                  title: 'Completely Free',
+                  desc: 'Every tool is 100% free with no hidden fees or sign-up required.',
+                  color: 'text-emerald-400 bg-emerald-500/10',
+                  svg: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />,
+                },
+                {
+                  title: 'Built for Gamers',
+                  desc: 'Designed with real gamer needs in mind — accurate, fast, and useful.',
+                  color: 'text-accent-purple-light bg-accent-purple/10',
+                  svg: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />,
+                },
+                {
+                  title: 'Works Everywhere',
+                  desc: 'Fully responsive — use on desktop, tablet, or mobile.',
+                  color: 'text-yellow-400 bg-yellow-500/10',
+                  svg: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />,
+                },
               ].map((item) => (
-                <div key={item.title} className="flex gap-4">
-                  <span className="text-2xl flex-shrink-0">{item.icon}</span>
+                <div key={item.title} className="flex gap-4 items-start">
+                  <div className={`flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${item.color}`}>
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      {item.svg}
+                    </svg>
+                  </div>
                   <div>
                     <h3 className="font-semibold text-slate-200 mb-1">{item.title}</h3>
                     <p className="text-slate-500 text-sm">{item.desc}</p>

@@ -46,12 +46,26 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Info */}
+          {/* Company */}
           <div>
-            <h3 className="text-slate-300 font-semibold text-sm mb-4 uppercase tracking-wider">About</h3>
-            <p className="text-slate-500 text-sm leading-relaxed mb-4">
-              All tools are completely free to use. No sign-up required.
-            </p>
+            <h3 className="text-slate-300 font-semibold text-sm mb-4 uppercase tracking-wider">Company</h3>
+            <ul className="space-y-2.5 mb-4">
+              <li>
+                <Link href="/about" className="text-slate-500 hover:text-accent-purple-light text-sm transition-colors duration-200">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-slate-500 hover:text-accent-purple-light text-sm transition-colors duration-200">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <a href="mailto:info@hplaptop.co" className="text-slate-500 hover:text-accent-cyan-light text-sm transition-colors duration-200">
+                  info@hplaptop.co
+                </a>
+              </li>
+            </ul>
             <div className="flex gap-3">
               <span className="tag-purple">Free</span>
               <span className="tag-cyan">No Ads</span>

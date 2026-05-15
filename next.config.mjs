@@ -37,6 +37,32 @@ const nextConfig = {
         destination: '/',
         permanent: true,
       },
+      // Legacy URLs surfaced in Vercel Analytics (May 2026)
+      {
+        source: '/how-do-you-treat-muscles-pain-after-an-accident',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/poco-f1-vs-poco-x3-which-one-should-you-buy',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/review-of-vivo-y21t-the-best-phone-for-senior-citizens',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/the-hp-laptop-you-should-get-based-on-your-budget',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/why-jackfruit-is-nutritious-and-beneficial',
+        destination: '/',
+        permanent: true,
+      },
     ]
   },
 }
